@@ -1,21 +1,12 @@
 function init() {
-    const fakeData = []
-    for (var i = 0; i < 100; i++) {
-        fakeData.push({
-            lat: Math.random() * 120 - 60,
-            lng: Math.random() * 120 - 60,
-            sentiment: Math.random() * 4 - 2
-        })
-    }
-
-    setTimeout(renderMap.bind(window, fakeData), 1000);
+    setTimeout(renderMap.bind(window, HussApi.getData()), 1000);
 }
 
 
 const hash = window.location.hash;
 if (hash.indexOf('selectedWorklet=13460%2418') != -1) {
     const container = document.createElement('div');
-    
+
     //put up our loader
     const preloader = document.createElement('img');
     preloader.src = chrome.extension.getURL('images/gears.svg');
@@ -49,7 +40,6 @@ if (hash.indexOf('selectedWorklet=13460%2418') != -1) {
     if (!('icons' in window.localStorage)) {
         window.localStorage.icons = 'default';
     }
-    
 
     window.renderMap = function(data) {
         container.removeChild(preloader);
@@ -65,5 +55,5 @@ if (hash.indexOf('selectedWorklet=13460%2418') != -1) {
         }, '*');
     }
 
-    injectWorklet('Global Sentiment Analysis', container, init);
+    $(injectWorklet.bind(null, 'Global Sentiment Analysis', container, init));
 }

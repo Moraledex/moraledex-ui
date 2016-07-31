@@ -9,7 +9,9 @@
     "author": "Morale Dex Team",
 
     "permissions": [
-        "*://*.workdaysuv.com/*"
+        "*://*.workdaysuv.com/*",
+         "https://k6xiqf7156.execute-api.us-east-1.amazonaws.com/*",
+         "https://maps.googleapis.com/maps/*"
     ],
 
     "content_scripts": [
@@ -46,7 +48,7 @@
         "images/thumbs/1.png",
         "images/thumbs/2.png"
     ],
-    
+
     "sandbox": {
         "pages": ["sandbox.html"],
         "content_security_policy": "sandbox allow-scripts; script-src https://maps.googleapis.com"

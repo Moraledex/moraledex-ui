@@ -21,7 +21,7 @@ class Map {
 
         /*
         for (let data of allData) {
-            console.log(data);
+            //console.log(data);
 
             
         }
