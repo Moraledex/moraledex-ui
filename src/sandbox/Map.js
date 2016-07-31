@@ -5,4 +5,8 @@ class Map {
             zoom: 8
         });
     }
+
+    renderData(data) {
+        console.log('ylksajdfads', data);
+    }
 }

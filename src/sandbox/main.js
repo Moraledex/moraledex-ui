@@ -1,6 +1,14 @@
+let map;
+
 function init() {
-    const map = new Map();
+    map = new Map();    
 }
+
+window.addEventListener('message', function(event) {
+    console.log('received data');
+
+    map.renderData(event.data);
+});
 
 if (document.readyState == 'complete') {
     init();
