@@ -22,5 +22,10 @@
             ],
             "run_at": "document_idle"
         }
-    ]
+    ],
+    
+    "sandbox": {
+        "pages": ["sandbox.html"],
+        "content_security_policy": "sandbox allow-scripts; script-src https://maps.googleapis.com"
+    }
 }
