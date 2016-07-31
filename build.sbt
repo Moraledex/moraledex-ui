@@ -1,6 +1,8 @@
 // Turn this project into a Scala.js project by importing these settings
 enablePlugins(ScalaJSPlugin)
 
+resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+
 scalaJSUseRhino in Global := false
 
 name := "moraledex-ui"
@@ -21,5 +23,6 @@ libraryDependencies ++= Seq(
     "com.lihaoyi" %%% "scalatags" % "0.6.0",
     "org.scala-js" %%% "scalajs-dom" % "0.9.0",
     "be.doeraene" %%% "scalajs-jquery" % "0.9.0",
+    "io.surfkit" %%% "scalajs-google-maps" % "0.1-SNAPSHOT",
     "com.lihaoyi" %%% "utest" % "0.3.0" % "test"
 )
