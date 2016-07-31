@@ -50,6 +50,13 @@ class Map {
     getIconBySentiment(sentiment) {
         sentiment = Math.round(sentiment);
 
+        if (sentiment > 2) {
+            sentiment = 2;
+        }
+        else if (sentiment < -2) {
+            sentiment = -2;
+        }
+
         return this.iconSet.getLink(sentiment);
     }
 }

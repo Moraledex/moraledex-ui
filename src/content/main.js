@@ -1,8 +1,3 @@
-function init() {
-    setTimeout(renderMap.bind(window, HussApi.getData()), 1000);
-}
-
-
 const hash = window.location.hash;
 if (hash.indexOf('selectedWorklet=13460%2418') != -1) {
     const container = document.createElement('div');
@@ -44,6 +39,8 @@ if (hash.indexOf('selectedWorklet=13460%2418') != -1) {
     window.renderMap = function(data) {
         container.removeChild(preloader);
 
+        console.log(data);
+
         //container.appendChild(sandbox);
         sandbox.style.height = '';
 
@@ -55,5 +52,9 @@ if (hash.indexOf('selectedWorklet=13460%2418') != -1) {
         }, '*');
     }
 
-    $(injectWorklet.bind(null, 'Global Sentiment Analysis', container, init));
+    $(injectWorklet.bind(null, 'Global Sentiment Analysis', container, () => {
+        HussApi.getData().then((realData) => {
+            renderMap(realData);
+        });
+    }));
 }
