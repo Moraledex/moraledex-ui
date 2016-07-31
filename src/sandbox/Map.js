@@ -31,7 +31,18 @@ class Map {
     }
 
     renderSingleData(data, remainingData) {
-        new google.maps.Marker({
+
+        var contentString = '<div id="content">'+
+            `<h1 id="firstHeading" class="firstHeading">${data.location}</h1>`+
+            '<div id="bodyContent">'+
+            `<p>Sentiment: ${data.sentiment}</p>`
+            '</div>';
+
+        let infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        let marker = new google.maps.Marker({
             position: {
                 lat: data.lat,
                 lng: data.lng
@@ -40,6 +51,9 @@ class Map {
             animation: google.maps.Animation.DROP,
             icon: this.getIconBySentiment(data.sentiment),
             title: data.location + '\nSentiment: ' + data.sentiment
+        });
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
         });
 
         if (remainingData.length > 0) {
