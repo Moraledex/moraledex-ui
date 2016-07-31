@@ -18,6 +18,13 @@ const HussApi = {
             promises.push(HussApi.setValues(location, sentiment));
           }
 
+          promises.push(Promise.resolve({
+            "lat": 71.29055559999999,
+            "lng": -156.7886111,
+            sentiment: -2,
+            location: 'North Beyond the Wall'
+          }));
+
           resolve(Promise.all(promises).then((results) => {
             //console.log('results', results, results.filter((data) => { return data !== null; }));
 
