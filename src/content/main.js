@@ -19,22 +19,29 @@ if (hash.indexOf('selectedWorklet=13460%2418') != -1) {
     span.textContent = 'Icon Set: ';
     container.appendChild(span);
 
+    if (!('icons' in window.localStorage)) {
+        window.localStorage.icons = 'default';
+    }
+
     const iconSelector = document.createElement('select');
     for (iconKey of ['thumbs', 'basic', 'default', 'eminem']) {
         const opt = document.createElement('option');
         opt.textContent = iconKey;
         opt.value = iconKey;
 
+        if (iconKey == window.localStorage.icons) {
+            console.log(window.localStorage.icons, iconKey);
+            opt.selected = true;
+        }
+
         iconSelector.appendChild(opt);
     }
     iconSelector.addEventListener('change', () => {
         window.localStorage.icons = iconSelector.options[iconSelector.selectedIndex].value;
+
+        window.location.reload();
     });
     container.appendChild(iconSelector);
-
-    if (!('icons' in window.localStorage)) {
-        window.localStorage.icons = 'default';
-    }
 
     window.renderMap = function(data) {
         container.removeChild(preloader);
