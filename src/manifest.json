@@ -19,14 +19,16 @@
                 "content.js"
             ],
             "css": [
-                "css/global.css"
+                "css/global.css",
+                "css/content.css"
             ],
             "run_at": "document_idle"
         }
     ],
 
     "web_accessible_resources": [
-        "sandbox.html"
+        "sandbox.html",
+        "images/preloaders.gif"
     ],
     
     "sandbox": {

@@ -1,40 +1,38 @@
 (function() {
 const wrapperClass = 'GBAP10EDHWO';
-const workletClass = 'GBAP10EDETI GBAP10EDAHG';
+const workletClass = 'GBAP10EDGTI GBAP10EDBHG';
 
-class WorkletInjector {
-    constructor(container) {
+function injectWorklet(title, worklet) {
+    const containers = document.getElementsByClassName(workletClass);
+
+    if (containers.length > 0) {
+        const container = containers[0];
         const parent = container.parentNode;
-        //const parent = container
-        //container = container.children[0]
 
-        console.log(container, parent);
+        const wrapper = document.createElement('div');
+        wrapper.className = wrapperClass;
+        wrapper.style.marginBottom = '20px';
 
-        this.worklet = document.createElement('div');
-        this.worklet.className = wrapperClass;
-        this.worklet.style.marginBottom = '20px';
-        //this.worklet.style.textAlign = 'center';
-        //this.worklet.style.width = '600px';
 
         const headerContainer = document.createElement('div');
         headerContainer.className = 'GBAP10EDFWO';
-        this.worklet.appendChild(headerContainer);
-
+        wrapper.appendChild(headerContainer);
         const span = document.createElement('span');
-        span.innerText = 'MoraleDex';
+        span.innerText = title;
         headerContainer.appendChild(span);
 
-        const sandbox = document.createElement('iframe');
-        sandbox.src = chrome.extension.getURL('sandbox.html');
-        sandbox.id = 'sentimentMap';
+        wrapper.appendChild(worklet);
 
-        this.worklet.appendChild(sandbox);
-
-        parent.insertBefore(this.worklet, container);
+        parent.insertBefore(wrapper, container);
+    }
+    else {
+        console.log('missing element, retrying');
+        //try again in 5 seconds
+        setTimeout(injectWorklet.bind(null, title, worklet), 5000);
     }
 }
 
-window.WorkletInjector = WorkletInjector;
+window.injectWorklet = injectWorklet;
 
 })();
 
