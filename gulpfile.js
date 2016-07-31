@@ -34,6 +34,7 @@ function replace(searchStr, replacement) {
 
 var config = {
     src: 'src/',
+    lib: 'lib/',
     buildDest: './build/',
     config: JSON.parse(fs.readFileSync('./config.json'))
 };
@@ -47,6 +48,10 @@ console.log('Google Maps Api Key: ', config.config.mapsApiKey);
 gulp.task('build:copy:all', function() {
     return gulp.src([config.src + '**/*', '!' + config.src + '**/*.js', '!' + config.src + 'sandbox.html'])
         .pipe(gulp.dest(config.buildDest));
+});
+gulp.task('build:copy:lib', function() {
+    return gulp.src(config.lib + '**/*')
+        .pipe(gulp.dest(config.buildDest + 'lib'));
 });
 gulp.task('build:copy:sandbox', function() {
     return gulp.src(config.src + 'sandbox.html')
@@ -64,7 +69,7 @@ gulp.task('build:compile:sandbox', compile.bind(null, 'sandbox'));
 gulp.task('build:compile:content', compile.bind(null, 'content'));
 
 //main build
-gulp.task('build:copy', ['build:copy:all', 'build:copy:sandbox']);
+gulp.task('build:copy', ['build:copy:all', 'build:copy:lib', 'build:copy:sandbox']);
 gulp.task('build:compile', ['build:compile:sandbox', 'build:compile:content']);
 
 gulp.task('build', function(cb) {

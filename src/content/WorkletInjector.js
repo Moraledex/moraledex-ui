@@ -2,7 +2,7 @@
 const wrapperClass = 'GBAP10EDHWO';
 const workletClass = 'GBAP10EDGTI GBAP10EDBHG';
 
-function injectWorklet(title, worklet) {
+function injectWorklet(title, worklet, callback) {
     const containers = document.getElementsByClassName(workletClass);
 
     if (containers.length > 0) {
@@ -24,11 +24,13 @@ function injectWorklet(title, worklet) {
         wrapper.appendChild(worklet);
 
         parent.insertBefore(wrapper, container);
+
+        callback();
     }
     else {
         console.log('missing element, retrying');
         //try again in 5 seconds
-        setTimeout(injectWorklet.bind(null, title, worklet), 5000);
+        setTimeout(injectWorklet.bind(null, title, worklet, callback), 5000);
     }
 }
 

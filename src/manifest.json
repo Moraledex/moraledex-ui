@@ -16,6 +16,7 @@
         {
             "matches": ["https://*.workdaysuv.com/*"],
             "js": [
+                "lib/jquery-3.1.0.min.js",
                 "content.js"
             ],
             "css": [
@@ -28,7 +29,12 @@
 
     "web_accessible_resources": [
         "sandbox.html",
-        "images/gears.svg"
+        "images/gears.svg",
+        "images/default/-2.png",
+        "images/default/-1.png",
+        "images/default/0.png",
+        "images/default/1.png",
+        "images/default/2.png"
     ],
     
     "sandbox": {
