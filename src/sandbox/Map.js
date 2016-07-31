@@ -11,7 +11,7 @@ class Map {
     }
 
     renderData(iconKey, allData) {
-        console.log(iconKey);
+        //console.log(allData);
 
         this.iconSet = icons[iconKey];
 
@@ -39,7 +39,7 @@ class Map {
             map: this.map,
             animation: google.maps.Animation.DROP,
             icon: this.getIconBySentiment(data.sentiment),
-            title: 'Sentiment: ' + data.sentiment
+            title: data.location + '\nSentiment: ' + data.sentiment
         });
 
         if (remainingData.length > 0) {

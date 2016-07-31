@@ -39,12 +39,12 @@ if (hash.indexOf('selectedWorklet=13460%2418') != -1) {
     window.renderMap = function(data) {
         container.removeChild(preloader);
 
-        console.log(data);
+        //console.log(data);
 
         //container.appendChild(sandbox);
         sandbox.style.height = '';
 
-        console.log('sending data', sandbox);
+        //console.log('sending data', sandbox);
 
         sandbox.contentWindow.postMessage({
             iconKey: window.localStorage.icons,
