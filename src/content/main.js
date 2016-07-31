@@ -20,7 +20,7 @@ if (hash.indexOf('selectedWorklet=13460%2418') != -1) {
     container.appendChild(span);
 
     const iconSelector = document.createElement('select');
-    for (iconKey of ['thumbs', 'basic', 'default']) {
+    for (iconKey of ['thumbs', 'basic', 'default', 'eminem']) {
         const opt = document.createElement('option');
         opt.textContent = iconKey;
         opt.value = iconKey;
