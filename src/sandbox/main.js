@@ -7,7 +7,7 @@ function init() {
 window.addEventListener('message', function(event) {
     console.log('received data');
 
-    map.renderData(event.data);
+    map.renderData(event.data.iconKey, event.data.data);
 });
 
 if (document.readyState == 'complete') {

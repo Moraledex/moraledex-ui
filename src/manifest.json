@@ -34,7 +34,17 @@
         "images/default/-1.png",
         "images/default/0.png",
         "images/default/1.png",
-        "images/default/2.png"
+        "images/default/2.png",
+        "images/basic/-2.png",
+        "images/basic/-1.png",
+        "images/basic/0.png",
+        "images/basic/1.png",
+        "images/basic/2.png",
+        "images/thumbs/-2.png",
+        "images/thumbs/-1.png",
+        "images/thumbs/0.png",
+        "images/thumbs/1.png",
+        "images/thumbs/2.png"
     ],
     
     "sandbox": {

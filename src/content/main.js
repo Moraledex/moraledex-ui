@@ -29,6 +29,28 @@ if (hash.indexOf('selectedWorklet=13460%2418') != -1) {
     sandbox.style.height = '0px';
     container.appendChild(sandbox);
 
+    const span = document.createElement('span');
+    span.textContent = 'Icon Set: ';
+    container.appendChild(span);
+
+    const iconSelector = document.createElement('select');
+    for (iconKey of ['thumbs', 'basic', 'default']) {
+        const opt = document.createElement('option');
+        opt.textContent = iconKey;
+        opt.value = iconKey;
+
+        iconSelector.appendChild(opt);
+    }
+    iconSelector.addEventListener('change', () => {
+        window.localStorage.icons = iconSelector.options[iconSelector.selectedIndex].value;
+    });
+    container.appendChild(iconSelector);
+
+    if (!('icons' in window.localStorage)) {
+        window.localStorage.icons = 'default';
+    }
+    
+
     window.renderMap = function(data) {
         container.removeChild(preloader);
 
@@ -37,7 +59,10 @@ if (hash.indexOf('selectedWorklet=13460%2418') != -1) {
 
         console.log('sending data', sandbox);
 
-        sandbox.contentWindow.postMessage(data, '*');
+        sandbox.contentWindow.postMessage({
+            iconKey: window.localStorage.icons,
+            data: data
+        }, '*');
     }
 
     injectWorklet('Global Sentiment Analysis', container, init);

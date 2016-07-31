@@ -9,5 +9,7 @@ class IconSet {
 }
 
 icons = {
-    default: new IconSet('default')
+    default: new IconSet('default'),
+    basic: new IconSet('basic'),
+    thumbs: new IconSet('thumbs')
 }
