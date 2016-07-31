@@ -19,9 +19,14 @@
                 "content.js"
             ],
             "css": [
+                "css/global.css"
             ],
             "run_at": "document_idle"
         }
+    ],
+
+    "web_accessible_resources": [
+        "sandbox.html"
     ],
     
     "sandbox": {
